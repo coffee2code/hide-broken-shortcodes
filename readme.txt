@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: shortcode, shortcodes, content, post, page, coffee2code
 Requires at least: 2.5
-Tested up to: 2.9.1
-Stable tag: 1.1
-Version: 1.1
+Tested up to: 3.0.1
+Stable tag: 1.2
+Version: 1.2
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -19,30 +19,67 @@ might be replaced by a plugin to embed a YouTube video into the post with a widt
     `[make_3d]Special News[/make_3d]`
 might be used to make a three-dimensional image of the text contained in the shortcode tag, 'Special News'.
 
-By default, if the plugin that provides the functionality to handle any given shortcode tag is disabled, or if a shortcode is improperly defined in the content (such as with a typo), then the shortcode in question appears on the blog in its entirety, unprocessed by WordPress.  At best this reveals unsightly code-like text to visitors and at worst can potentially expose information not intended for visitors' eyes.
+By default, if the plugin that provides the functionality to handle any given shortcode tag is disabled, or if a shortcode is improperly defined in the content (such as with a typo), then the shortcode in question appears on the blog in its entirety, unprocessed by WordPress.  At best this reveals unsightly code-like text to visitors and at worst can potentially expose information not intended to be seen by visitors.
 
 This plugin prevents unhandled shortcodes from appearing in the content of a post or page. If the shortcode is of the self-closing variety (the first example above), then the shortcode tag and its attributes are not displayed and nothing is shown in their place.  If the shortcode is of the enclosing variety (the second example above), then the text that is being enclosed will be shown, but the shortcode tag and attributes that surround the text will not be displayed (e.g. in the second example above, "Special News" will still be displayed on the site).
 
-A filter is also available by the name of 'hide_broken_shortcode' that allows you to customize what, if anything, gets displayed when a broken shortcode is encountered.  Your hooking function can be sent 3 arguments:
+See the Filters section for more customization tips.
 
-* The default display text (what the plugin would display by default)
-* The name of the shortcode
-* The text bookended by opening and closing broken shortcodes, if present
-
-Example:
-
-	`add_filter('hide_broken_shortcode', 'hbs_handler', 10, 3);
-	function hbs_handler($default, $tag, $content) {
-		return ''; // Don't show the shortcode or text bookended by the shortcode
-	}`
 
 == Installation ==
 
 1. Unzip `hide-broken-shortcodes.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Optionally filter 'hide_broken_shortcode' if you want to customize the behavior of the plugin
+1. Optionally filter 'hide_broken_shortcode' or 'hide_broken_shortcodes_filters' if you want to customize the behavior of the plugin
+
+
+== Filters ==
+
+The plugin is further customizable via two filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
+
+= hide_broken_shortcode =
+
+The 'hide_broken_shortcode' filter allows you to customize what, if anything, gets displayed when a broken shortcode is encountered.  Your hooking function can be sent 3 arguments:
+
+Arguments :
+
+* $default (string): The default display text (what the plugin would display by default)
+* $shortcode (string): The name of the shortcode
+* The text bookended by opening and closing broken shortcodes, if present
+
+Example:
+
+`add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
+function hbs_handler( $default, $shortcode, $content ) {
+	return ''; // Don't show the shortcode or text bookended by the shortcode
+}`
+
+= hide_broken_shortcodes_filters =
+
+The 'hide_broken_shortcodes_filters' filter allows you to customize what filters to hook to find text with potential broken shortcodes.  The two default filters are 'the_content' and 'widget_text'. Your hooking function will only be sent one argument: the array of filters.
+
+Example:
+
+`add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
+function hbs_filter( $filters_array ) {
+	$filters_array[] = 'the_title'; // Assuming you've activated shortcode support in post titles
+	return $filters_array;
+}`
+
 
 == Changelog ==
+
+= 1.2 =
+* Allow customization of the filters the plugin applies to via the 'hide_broken_shortcodes_filters' filter
+* Change do_shortcode filter priority from 12 to 1001 (to avoid incompatibility with Preserve Code Formatting, and maybe others)
+* Move registering filters into register_filters()
+* Rename class from 'HideBrokenShortcodes' to 'c2c_HideBrokenShortcodes'
+* Store plugin instance in global variable, $c2c_hide_broken_shortcodes, to allow for external manipulation
+* Note compatibility with WP 3.0+
+* Minor code reformatting (spacing)
+* Add Filters and Upgrade Notice sections to readme.txt
+* Remove all header documentation and instructions from plugin file (all that and more are in readme.txt)
+* Remove trailing whitespace from header docs
 
 = 1.1 =
 * Create filter 'hide_broken_shortcode' to allow customization of the output for broken shortcodes
@@ -53,3 +90,9 @@ Example:
 
 = 1.0 =
 * Initial release
+
+
+== Upgrade Notice ==
+
+= 1.2 =
+Minor update. Highlights: added hooks for customization; renamed class; re-prioritized hook to avoid conflict with other plugins; verified WP 3.0 compatibility.
