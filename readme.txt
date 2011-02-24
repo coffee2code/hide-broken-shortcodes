@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: shortcode, shortcodes, content, post, page, coffee2code
 Requires at least: 2.5
-Tested up to: 3.0.1
-Stable tag: 1.2
-Version: 1.2
+Tested up to: 3.1
+Stable tag: 1.3
+Version: 1.3
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -24,6 +24,8 @@ By default, if the plugin that provides the functionality to handle any given sh
 This plugin prevents unhandled shortcodes from appearing in the content of a post or page. If the shortcode is of the self-closing variety (the first example above), then the shortcode tag and its attributes are not displayed and nothing is shown in their place.  If the shortcode is of the enclosing variety (the second example above), then the text that is being enclosed will be shown, but the shortcode tag and attributes that surround the text will not be displayed (e.g. in the second example above, "Special News" will still be displayed on the site).
 
 See the Filters section for more customization tips.
+
+Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Author Homepage]:(http://coffee2code.com)
 
 
 == Installation ==
@@ -69,6 +71,12 @@ function hbs_filter( $filters_array ) {
 
 == Changelog ==
 
+= 1.3 =
+* Switch from object instantiation to direct class invocation
+* Explicitly declare all functions public static
+* Note compatibility through WP 3.1+
+* Update copyright date (2011)
+
 = 1.2 =
 * Allow customization of the filters the plugin applies to via the 'hide_broken_shortcodes_filters' filter
 * Change do_shortcode filter priority from 12 to 1001 (to avoid incompatibility with Preserve Code Formatting, and maybe others)
@@ -93,6 +101,9 @@ function hbs_filter( $filters_array ) {
 
 
 == Upgrade Notice ==
+
+= 1.3 =
+Minor update: slight implementation modification; updated copyright date; other minor code changes.
 
 = 1.2 =
 Minor update. Highlights: added hooks for customization; renamed class; re-prioritized hook to avoid conflict with other plugins; verified WP 3.0 compatibility.
