@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: shortcode, shortcodes, content, post, page, coffee2code
 Requires at least: 2.5
-Tested up to: 3.1
-Stable tag: 1.3
-Version: 1.3
+Tested up to: 3.2
+Stable tag: 1.3.1
+Version: 1.3.1
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -25,7 +25,7 @@ This plugin prevents unhandled shortcodes from appearing in the content of a pos
 
 See the Filters section for more customization tips.
 
-Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Author Homepage]:(http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -71,6 +71,11 @@ function hbs_filter( $filters_array ) {
 
 == Changelog ==
 
+= 1.3.1 =
+* Note compatibility through WP 3.2+
+* Minor code formatting changes (spacing, variable removal)
+* Fix plugin homepage and author links in description in readme.txt
+
 = 1.3 =
 * Switch from object instantiation to direct class invocation
 * Explicitly declare all functions public static
@@ -101,6 +106,9 @@ function hbs_filter( $filters_array ) {
 
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+Trivial update: noted compatibility through WP 3.2+ and minor code formatting changes (spacing)
 
 = 1.3 =
 Minor update: slight implementation modification; updated copyright date; other minor code changes.

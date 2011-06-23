@@ -2,17 +2,17 @@
 /**
  * @package Hide_Broken_Shortcodes
  * @author Scott Reilly
- * @version 1.3
+ * @version 1.3.1
  */
 /*
 Plugin Name: Hide Broken Shortcodes
-Version: 1.3
+Version: 1.3.1
 Plugin URI: http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Description: Prevent broken shortcodes from appearing in posts and pages.
 
-Compatible with WordPress 2.5+, 2.6+, 2.7+, 2.8+, 2.9+, 3.0+, 3.1+.
+Compatible with WordPress 2.5+, 2.6+, 2.7+, 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -36,7 +36,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( !class_exists( 'c2c_HideBrokenShortcodes' ) ) :
+if ( ! class_exists( 'c2c_HideBrokenShortcodes' ) ) :
 
 class c2c_HideBrokenShortcodes {
 
@@ -63,8 +63,7 @@ class c2c_HideBrokenShortcodes {
 	 * @return string
 	 */
 	public static function do_shortcode( $content ) {
-		$pattern = self::get_shortcode_regex();
-		return preg_replace_callback( '/'.$pattern.'/s', array( __CLASS__, 'do_shortcode_tag' ), $content );
+		return preg_replace_callback( '/' . self::get_shortcode_regex() . '/s', array( __CLASS__, 'do_shortcode_tag' ), $content );
 	}
 
 	/**
