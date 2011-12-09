@@ -3,11 +3,12 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: shortcode, shortcodes, content, post, page, coffee2code
 Requires at least: 2.5
-Tested up to: 3.2
-Stable tag: 1.3.1
-Version: 1.3.1
+Tested up to: 3.3
+Stable tag: 1.4
+Version: 1.4
 
 Prevent broken shortcodes from appearing in posts and pages.
+
 
 == Description ==
 
@@ -25,7 +26,7 @@ This plugin prevents unhandled shortcodes from appearing in the content of a pos
 
 See the Filters section for more customization tips.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/hide-broken-shortcodes/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -33,6 +34,32 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcode
 1. Unzip `hide-broken-shortcodes.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Optionally filter 'hide_broken_shortcode' or 'hide_broken_shortcodes_filters' if you want to customize the behavior of the plugin
+
+
+== Frequently Asked Questions ==
+
+= How can I type out a shortcode in a post so that it doesn't get processed by WordPress or hidden by this plugin? =
+
+If you want want a shortcode to appear as-is in a post (for example, you are trying to provide an example of how to use a shortcode), can use the shortcode escaping syntax, which is built into WordPress, by using two opening brackets to start the shortcode, and two closing brackets to close the shortcode:
+
+* `[[some_shortcode]]`
+* `[[an_example style="yes"]some text[/an_example]]`
+
+The shortcodes will appear in your post (but without the double brackets).
+
+= How can I prevent certain broken shortcodes from being hidden? =
+
+Assuming you want to allow the broken shortcodes 'abc' and 'gallery' to be ignored by this plugin (and therefore not hidden if broken), you include the following in your theme's functions.php file or in a site-specific plugin:
+
+`
+function allowed_broken_shortcodes( $display, $shortcode_name, $m ) {
+	$shortcodes_not_to_hide = array( 'abc', 'gallery' );
+	if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) )
+		$default_display = $m[0];
+	return $default_display;
+}
+add_filter( 'hide_broken_shortcode', 'allowed_broken_shortcodes', 10, 3 );
+`
 
 
 == Filters ==
@@ -71,6 +98,15 @@ function hbs_filter( $filters_array ) {
 
 == Changelog ==
 
+= 1.4 =
+* Update get_shortcode_regex() and do_shortcode_tag() to support shortcode escape syntax
+* NOTE: The preg match array sent via the 'hide_broken_shortcode' filter has changed and requires you to update any code that hooks it
+* Add version() to return plugin version
+* Note compatibility through WP 3.3+
+* Add Frequently Asked Questions section to readme.txt
+* Add link to plugin directory page to readme.txt
+* Update copyright date (2012)
+
 = 1.3.1 =
 * Note compatibility through WP 3.2+
 * Minor code formatting changes (spacing, variable removal)
@@ -106,6 +142,9 @@ function hbs_filter( $filters_array ) {
 
 
 == Upgrade Notice ==
+
+= 1.4 =
+Minor update: support shortcode escaping syntax; noted compatibility through WP 3.3+. BE AWARE: An incompatible change has been made in third argument sent to 'hide_broken_shortcode' filter.
 
 = 1.3.1 =
 Trivial update: noted compatibility through WP 3.2+ and minor code formatting changes (spacing)
