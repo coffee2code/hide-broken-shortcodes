@@ -2,11 +2,11 @@
 /**
  * @package Hide_Broken_Shortcodes
  * @author Scott Reilly
- * @version 1.6
+ * @version 1.6.1
  */
 /*
 Plugin Name: Hide Broken Shortcodes
-Version: 1.6
+Version: 1.6.1
 Plugin URI: http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
 Author: Scott Reilly
 Author URI: http://coffee2code.com/
@@ -14,11 +14,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Prevent broken shortcodes from appearing in posts and pages.
 
-Compatible with WordPress 2.5 through 3.5+.
+Compatible with WordPress 2.5 through 3.8+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/extend/plugins/hide-broken-shortcodes/
+=>> Or visit: http://wordpress.org/plugins/hide-broken-shortcodes/
 
 TODO:
 	* (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
@@ -26,7 +26,7 @@ TODO:
 */
 
 /*
-	Copyright (c) 2009-2013 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2014 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -55,7 +55,7 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.4
 	 */
 	public static function version() {
-		return '1.6';
+		return '1.6.1';
 	}
 
 	/**
