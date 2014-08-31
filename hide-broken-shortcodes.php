@@ -1,29 +1,28 @@
 <?php
 /**
+ * Plugin Name: Hide Broken Shortcodes
+ * Version:     1.6.2
+ * Plugin URI:  http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
+ * Author:      Scott Reilly
+ * Author URI:  http://coffee2code.com/
+ * License:     GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Description: Prevent broken shortcodes from appearing in posts and pages.
+ *
+ * Compatible with WordPress 2.5 through 4.0+.
+ *
+ * =>> Read the accompanying readme.txt file for instructions and documentation.
+ * =>> Also, visit the plugin's homepage for additional information and updates.
+ * =>> Or visit: https://wordpress.org/plugins/hide-broken-shortcodes/
+ *
+ * TODO:
+ * * (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
+ * * Add donate to plugin row links
+ *
  * @package Hide_Broken_Shortcodes
  * @author Scott Reilly
- * @version 1.6.1
+ * @version 1.6.2
  */
-/*
-Plugin Name: Hide Broken Shortcodes
-Version: 1.6.1
-Plugin URI: http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
-Author: Scott Reilly
-Author URI: http://coffee2code.com/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Description: Prevent broken shortcodes from appearing in posts and pages.
-
-Compatible with WordPress 2.5 through 3.8+.
-
-=>> Read the accompanying readme.txt file for instructions and documentation.
-=>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/plugins/hide-broken-shortcodes/
-
-TODO:
-	* (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
-	* Add donate to plugin row links
-*/
 
 /*
 	Copyright (c) 2009-2014 by Scott Reilly (aka coffee2code)
@@ -55,7 +54,7 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.4
 	 */
 	public static function version() {
-		return '1.6.1';
+		return '1.6.2';
 	}
 
 	/**
@@ -70,8 +69,9 @@ class c2c_HideBrokenShortcodes {
 	 */
 	public static function register_filters() {
 		$filters = (array) apply_filters( 'hide_broken_shortcodes_filters', array( 'the_content', 'widget_text' ) );
-		foreach ( $filters as $filter )
+		foreach ( $filters as $filter ) {
 			add_filter( $filter, array( __CLASS__, 'do_shortcode' ), 1001 ); // Do this after the built-in do_shortcode() operates, which is 11
+		}
 	}
 
 	/**
@@ -141,8 +141,9 @@ class c2c_HideBrokenShortcodes {
 		// If this function gets executed, then the shortcode found is not being handled.
 
 		// allow [[foo]] syntax for escaping a tag
-		if ( $m[1] == '[' && $m[6] == ']' )
+		if ( $m[1] == '[' && $m[6] == ']' ) {
 			return substr( $m[0], 1, -1 );
+		}
 
 		// If text is being wrapped by opening and closing shortcode tag, show text. Otherwise, show nothing.
 		$default_display = ( isset( $m[5] ) ? self::do_shortcode( $m[5] ) : '' );
