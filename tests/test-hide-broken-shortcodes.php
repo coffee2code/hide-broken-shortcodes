@@ -80,6 +80,10 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 	 */
 
 
+	function test_version() {
+		$this->assertEquals( '1.6.3', c2c_HideBrokenShortcodes::version() );
+	}
+
 	function test_handled_shortcode_not_affected() {
 		$this->assertEquals( 'hello (fox)', do_shortcode( 'hello [abcabc aaa="fox"]' ) );
 		$this->assertEquals( '(fox)', trim( apply_filters( 'the_content', '[abcabc aaa="fox"]' ) ) );
