@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Hide Broken Shortcodes
- * Version:     1.6.3
+ * Version:     1.7
  * Plugin URI:  http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -9,19 +9,21 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Prevent broken shortcodes from appearing in posts and pages.
  *
- * Compatible with WordPress 2.5 through 4.1+.
+ * Compatible with WordPress 2.5 through 4.2+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
  * =>> Or visit: https://wordpress.org/plugins/hide-broken-shortcodes/
  *
- * TODO:
- * * (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
- * * Add donate to plugin row links
- *
  * @package Hide_Broken_Shortcodes
- * @author Scott Reilly
- * @version 1.6.3
+ * @author  Scott Reilly
+ * @version 1.7
+ */
+
+/*
+ * TODO:
+ * - (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
+ * - Add donate to plugin row links
  */
 
 /*
@@ -34,7 +36,7 @@
 
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
@@ -54,7 +56,7 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.4
 	 */
 	public static function version() {
-		return '1.6.3';
+		return '1.7';
 	}
 
 	/**
@@ -65,10 +67,13 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Register filters
+	 * Register filters.
+	 *
+	 * @since 1.7 Filter 'the_excerpt' by default as well.
 	 */
 	public static function register_filters() {
-		$filters = (array) apply_filters( 'hide_broken_shortcodes_filters', array( 'the_content', 'widget_text' ) );
+		$filters = (array) apply_filters( 'hide_broken_shortcodes_filters', array( 'the_content', 'the_excerpt', 'widget_text' ) );
+
 		foreach ( $filters as $filter ) {
 			add_filter( $filter, array( __CLASS__, 'do_shortcode' ), 1001 ); // Do this after the built-in do_shortcode() operates, which is 11
 		}
@@ -77,7 +82,7 @@ class c2c_HideBrokenShortcodes {
 	/**
 	 * Like WP's do_shortcode(), but doesn't return content immediately if no shortcodes exist.
 	 *
-	 * @param string $content The primary text to be processed for shortcodes
+	 * @param  string $content The primary text to be processed for shortcodes.
 	 * @return string
 	 */
 	public static function do_shortcode( $content ) {
@@ -125,14 +130,15 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Callback to handle each shortcode not replaced via the traditional shortcode system.
+	 * Callback to handle each shortcode not replaced via the traditional shortcode
+	 * system.
 	 *
 	 * The actual replacement string used can be modified by filtering
-	 * 'hide_broken_shortcode'.  By default this is the text between the
+	 * 'hide_broken_shortcode'. By default this is the text between the
 	 * opening/closing shortcode tags, or an empty string if there was no
 	 * closing tag.
 	 *
-	 * @param string $m The preg_match result array for the unhandled shortcode.
+	 * @param  string $m The preg_match result array for the unhandled shortcode.
 	 * @return string The replacement string for the unhandled shortcode.
 	 */
 	public static function do_shortcode_tag( $m ) {

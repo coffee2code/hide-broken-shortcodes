@@ -4,18 +4,21 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 	function setUp() {
 		parent::setUp();
-//add_filter( 'my_text', array( 'c2c_HideBrokenShortcodes', 'do_shortcode' ) );
+
 		add_shortcode( 'abcabc', array( $this, 'handle_shortcode' ) );
 	}
 
 	function tearDown() {
 		parent::tearDown();
+
 		remove_shortcode( 'abcabc' );
-		remove_filter( 'hide_broken_shortcode', array( $this, 'prevent_shortcode_hiding' ), 10, 3 );
+
+		remove_filter( 'hide_broken_shortcode',          array( $this, 'prevent_shortcode_hiding' ), 10, 3 );
+		remove_filter( 'hide_broken_shortcodes_filters', array( $this, 'filter_the_title' ) );
 	}
 
 
-	/**
+	/*
 	 *
 	 * DATA PROVIDERS
 	 *
@@ -39,8 +42,16 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		);
 	}
 
+	function default_filters() {
+		return array(
+			array( 'the_content' ),
+			array( 'the_excerpt' ),
+			array( 'widget_text' ),
+		);
+	}
 
-	/**
+
+	/*
 	 *
 	 * HELPER FUNCTIONS
 	 *
@@ -67,13 +78,19 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 	function prevent_shortcode_hiding( $default_display, $shortcode_name, $match_array ) {
 		$shortcodes_not_to_hide = array( 'unknown' );
-		if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) )
+		if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
 			$display = $match_array[0];
+		}
 		return $display;
 	}
 
+	function filter_the_title( $filters ) {
+		$filters[] = 'the_title';
+		return $filters;
+	}
 
-	/**
+
+	/*
 	 *
 	 * TESTS
 	 *
@@ -81,7 +98,26 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 
 	function test_version() {
-		$this->assertEquals( '1.6.3', c2c_HideBrokenShortcodes::version() );
+		$this->assertEquals( '1.7', c2c_HideBrokenShortcodes::version() );
+	}
+
+	/**
+	 * @dataProvider default_filters
+	 */
+	function test_hooks_default_filter( $filter ) {
+		$this->assertEquals( 1001, has_filter( $filter, array( 'c2c_HideBrokenShortcodes', 'do_shortcode' ) ) );
+	}
+
+	/**
+	 * @dataProvider text_shortcode_without_content
+	 */
+	function test_hooks_custom_filter( $text ) {
+		$this->assertEquals( apply_filters( 'the_title', $text ), apply_filters( 'the_title', $text ) );
+
+		add_filter( 'hide_broken_shortcodes_filters', array( $this, 'filter_the_title' ) );
+		c2c_HideBrokenShortcodes::register_filters(); // Pretend the filter was added before plugin initialized.
+
+		$this->assertEquals( 'This contains  shortcode.', apply_filters( 'the_title', $text ) );
 	}
 
 	function test_handled_shortcode_not_affected() {

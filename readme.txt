@@ -5,8 +5,8 @@ Tags: shortcode, shortcodes, content, post, page, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
-Tested up to: 4.1
-Stable tag: 1.6.3
+Tested up to: 4.2
+Stable tag: 1.7
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -47,8 +47,9 @@ Assuming you want to allow the broken shortcodes 'abc' and 'gallery' to be ignor
 `
 function allowed_broken_shortcodes( $display, $shortcode_name, $m ) {
 	$shortcodes_not_to_hide = array( 'abc', 'gallery' );
-	if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) )
+	if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
 		$display = $m[0];
+	}
 	return $display;
 }
 add_filter( 'hide_broken_shortcode', 'allowed_broken_shortcodes', 10, 3 );
@@ -75,25 +76,50 @@ Arguments :
 
 Example:
 
-`add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
+`
+/**
+ * Don't show broken shortcodes or the content they wrap.
+ *
+ * @param string $default The output the plugin would normally show.
+ * @param string $shortcode The name of the shortcode.
+ * @param string $content The text between the opening and closing "tags" of the shortcode, if any.
+ * @return string
+ */
 function hbs_handler( $default, $shortcode, $content ) {
 	return ''; // Don't show the shortcode or text bookended by the shortcode
-}`
+}
+add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
+`
 
 = hide_broken_shortcodes_filters =
 
-The 'hide_broken_shortcodes_filters' filter allows you to customize what filters to hook to find text with potential broken shortcodes. The two default filters are 'the_content' and 'widget_text'. Your hooking function will only be sent one argument: the array of filters.
+The 'hide_broken_shortcodes_filters' filter allows you to customize what filters to hook to find text with potential broken shortcodes. The three default filters are 'the_content', 'the_excerpt', and 'widget_text'. Your hooking function will only be sent one argument: the array of filters.
 
 Example:
 
-`add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
+`
+/**
+ * Make Hide Broken Shortcodes also filter 'the_title'.
+ *
+ * @param  array $filters_array The filters the plugin will handle.
+ * @return array
+ */
 function hbs_filter( $filters_array ) {
 	$filters_array[] = 'the_title'; // Assuming you've activated shortcode support in post titles
 	return $filters_array;
-}`
+}
+add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
+`
 
 
 == Changelog ==
+
+= 1.7 (2015-04-02) =
+* Enhancement: Filter 'the_excerpt' by default as well
+* Update: Add more unit tests
+* Update: Note compatibility through WP 4.2+
+* Update: Add inline documentation to examples in readme.txt
+* Update: Minor inline documentation tweaks (spacing, formatting)
 
 = 1.6.3 (2015-02-14) =
 * Add trivial unit test for plugin version
@@ -173,6 +199,9 @@ function hbs_filter( $filters_array ) {
 
 
 == Upgrade Notice ==
+
+= 1.7 =
+Minor update: also filter excerpts by default; noted compatibility through WP 4.2+
 
 = 1.6.3 =
 Trivial update: noted compatibility through WP 4.1+ and updated copyright date (2015)
