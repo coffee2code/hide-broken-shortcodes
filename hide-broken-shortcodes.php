@@ -9,7 +9,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Prevent broken shortcodes from appearing in posts and pages.
  *
- * Compatible with WordPress 2.5 through 4.2+.
+ * Compatible with WordPress 2.5 through 4.3+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
