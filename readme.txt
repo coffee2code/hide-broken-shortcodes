@@ -5,8 +5,8 @@ Tags: shortcode, shortcodes, content, post, page, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
-Tested up to: 4.3
-Stable tag: 1.7
+Tested up to: 4.4
+Stable tag: 1.7.1
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -114,8 +114,15 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
-= () =
-* Update: Note compatibility through WP 4.3+
+= 1.7.1 (2016-01-27) =
+* Change: Register hooks during 'plugins_loaded' instead of 'init'.
+* New: Add support for language packs:
+    * Define 'Text Domain' header attribute.
+    * Load textdomain.
+* New: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
+* Change: Note compatibility through WP 4.4+.
+* Change: Explicitly declare methods in unit tests as public.
+* Change: Update copyright date (2016).
 
 = 1.7 (2015-04-02) =
 * Enhancement: Filter 'the_excerpt' by default as well
@@ -202,6 +209,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+Trivial update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)
 
 = 1.7 =
 Minor update: also filter excerpts by default; noted compatibility through WP 4.2+

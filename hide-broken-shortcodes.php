@@ -1,15 +1,16 @@
 <?php
 /**
  * Plugin Name: Hide Broken Shortcodes
- * Version:     1.7
+ * Version:     1.7.1
  * Plugin URI:  http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
+ * Text Domain: hide-broken-shortcodes
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Prevent broken shortcodes from appearing in posts and pages.
  *
- * Compatible with WordPress 2.5 through 4.3+.
+ * Compatible with WordPress 2.5 through 4.4+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -17,7 +18,7 @@
  *
  * @package Hide_Broken_Shortcodes
  * @author  Scott Reilly
- * @version 1.7
+ * @version 1.7.1
  */
 
 /*
@@ -27,7 +28,7 @@
  */
 
 /*
-	Copyright (c) 2009-2015 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2016 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -56,14 +57,14 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.4
 	 */
 	public static function version() {
-		return '1.7';
+		return '1.7.1';
 	}
 
 	/**
 	 * Class constructor: initializes class variables and adds actions and filters.
 	 */
 	public static function init() {
-		add_action( 'init', array( __CLASS__, 'register_filters' ) );
+		add_action( 'plugins_loaded', array( __CLASS__, 'register_filters' ) );
 	}
 
 	/**
@@ -72,6 +73,9 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.7 Filter 'the_excerpt' by default as well.
 	 */
 	public static function register_filters() {
+		// Load plugin textdomain.
+		load_plugin_textdomain( 'hide-broken-shortcodes' );
+
 		$filters = (array) apply_filters( 'hide_broken_shortcodes_filters', array( 'the_content', 'the_excerpt', 'widget_text' ) );
 
 		foreach ( $filters as $filter ) {
