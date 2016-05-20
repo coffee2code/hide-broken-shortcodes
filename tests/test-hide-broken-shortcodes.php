@@ -128,6 +128,13 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		$this->assertEquals( '(hippo)hiphop(end)', trim( apply_filters( 'the_content', '[abcabc aaa="hippo"]hiphop[/abcabc]' ) ) );
 	}
 
+	public function test_shortcode_escape_notation_not_affected() {
+		$text     = 'Use [[shortcode]] like so.';
+		$expected = 'Use [shortcode] like so.';
+
+		$this->assertEquals( wpautop( $expected ), apply_filters( 'the_content', $text ) );
+	}
+
 	/**
 	 * @dataProvider text_shortcode_without_content
 	 */

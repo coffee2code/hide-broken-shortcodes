@@ -115,6 +115,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 == Changelog ==
 
 = () =
+* New: Add unit test to ensure shortcode escape notation is not hidden by the plugin.
 * Change: Prevent web invocation of unit test bootstrap.php.
 * Change: Note compatibility through WP 4.5+.
 
