@@ -5,7 +5,7 @@ Tags: shortcode, shortcodes, content, post, page, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
-Tested up to: 4.4
+Tested up to: 4.5
 Stable tag: 1.7.1
 
 Prevent broken shortcodes from appearing in posts and pages.
@@ -113,6 +113,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 
 == Changelog ==
+
+= () =
+* Change: Note compatibility through WP 4.5+.
 
 = 1.7.1 (2016-01-27) =
 * Change: Register hooks during 'plugins_loaded' instead of 'init'.
