@@ -115,6 +115,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 == Changelog ==
 
 = () =
+* Change: Prevent web invocation of unit test bootstrap.php.
 * Change: Note compatibility through WP 4.5+.
 
 = 1.7.1 (2016-01-27) =
