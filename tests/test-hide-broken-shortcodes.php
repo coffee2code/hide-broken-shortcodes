@@ -135,6 +135,35 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		$this->assertEquals( wpautop( $expected ), apply_filters( 'the_content', $text ) );
 	}
 
+	public function test_does_not_affect_bracket_usage_within_html_tags() {
+		$html = array(
+			'<input type="text" name="hello[world]" />',
+			'<input type="text" name="hello[\'world\']" />',
+			"<input type='text' name='hello[\"world\"]' />",
+			"<span class='example' title='What if cart[qty] were here?'>Test</span>",
+			'<span class="example" title="What if cart[qty] were here?">Test</span>',
+			'<span class="example" title="What if cart[\"qty\"] were here?">Test</span>',
+			'<span class="example" title="What if cart[qty name="yes"] were here?">Test</span>',
+			"If this <cat[qty]>.",
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( $h ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
+	/**
+	 * @todo Maybe if it gets smarter.
+	 */
+	/*
+	public function test_does_affect_bracket_usage_in_non_form_html_attributes() {
+		$html     = '<span type="text" name="hello[world]">Text</span>';
+		$expected = '<span type="text" name="hello">Text</span>';
+
+		$this->assertEquals( wpautop( $expected ), apply_filters( 'the_content', $html ) );
+	}
+	*/
+
 	/**
 	 * @dataProvider text_shortcode_without_content
 	 */

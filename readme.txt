@@ -114,7 +114,8 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
-= () =
+= 1.8 (2016-05-21) =
+* Bugfix: Don't attempt to hide shortcodes (or what may look like shortcodes) appearing within HTML tags.
 * New: Add unit test to ensure shortcode escape notation is not hidden by the plugin.
 * Change: Prevent web invocation of unit test bootstrap.php.
 * Change: Note compatibility through WP 4.5+.

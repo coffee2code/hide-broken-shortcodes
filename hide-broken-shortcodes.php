@@ -102,8 +102,8 @@ class c2c_HideBrokenShortcodes {
 		$tagregexp = '[a-zA-Z_\-][0-9a-zA-Z_\-\+]{2,}';
 
 		// WARNING! Do not change this regex without changing do_shortcode_tag()
-		return
-			  '\\['                              // Opening bracket
+		return '(?!<.*)'                         // Non-capturing check that text within HTML tags are skipped
+			. '\\['                              // Opening bracket
 			. '(\\[?)'                           // 1: Optional second opening bracket for escaping shortcodes: [[tag]]
 			. "($tagregexp)"                     // 2: Shortcode name
 			. '(?![\\w-])'                       // Not followed by word character or hyphen
@@ -130,7 +130,8 @@ class c2c_HideBrokenShortcodes {
 			.         '\\[\\/\\2\\]'             // Closing shortcode tag
 			.     ')?'
 			. ')'
-			. '(\\]?)';                          // 6: Optional second closing brocket for escaping shortcodes: [[tag]]
+			. '(\\]?)'                           // 6: Optional second closing brocket for escaping shortcodes: [[tag]]
+			. '(?![^<>]*>)';                     // Non-capturing check that text within HTML tags are skipped
 	}
 
 	/**
