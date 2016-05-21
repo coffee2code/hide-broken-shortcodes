@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 4.5
-Stable tag: 1.7.1
+Stable tag: 1.8
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -215,6 +215,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 
 == Upgrade Notice ==
+
+= 1.8 =
+Bugfix release: no longer attempt to hide shortcodes (or what looks like shortcodes) within HTML tags (fixes compatibility with WooCommerce, among others); verified compatibility through WP 4.5+.
 
 = 1.7.1 =
 Trivial update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)
