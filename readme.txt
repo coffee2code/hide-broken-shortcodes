@@ -114,6 +114,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
+= () =
+* Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
+
 = 1.8 (2016-05-21) =
 * Bugfix: Don't attempt to hide shortcodes (or what may look like shortcodes) appearing within HTML tags.
 * New: Add unit test to ensure shortcode escape notation is not hidden by the plugin.
