@@ -116,6 +116,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 = () =
 * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
+* Change: Enable more error output for unit tests.
 
 = 1.8 (2016-05-21) =
 * Bugfix: Don't attempt to hide shortcodes (or what may look like shortcodes) appearing within HTML tags.

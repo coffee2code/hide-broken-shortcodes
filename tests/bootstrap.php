@@ -5,6 +5,8 @@
  * @package Hide_Broken_Shortcodes
  */
 
+ini_set('display_errors','on');
+error_reporting(E_ALL);
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 if ( ! $_tests_dir ) {
