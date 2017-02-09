@@ -5,7 +5,7 @@ Tags: shortcode, shortcodes, content, post, page, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
-Tested up to: 4.5
+Tested up to: 4.7
 Stable tag: 1.8
 
 Prevent broken shortcodes from appearing in posts and pages.
@@ -117,6 +117,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 = () =
 * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
 * Change: Enable more error output for unit tests.
+* Change: Note compatibility through WP 4.7+.
 * Change: Update copyright date (2017).
 * New: Add LICENSE file.
 
