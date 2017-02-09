@@ -141,10 +141,57 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 			'<input type="text" name="hello[\'world\']" />',
 			"<input type='text' name='hello[\"world\"]' />",
 			"<span class='example' title='What if cart[qty] were here?'>Test</span>",
-			'<span class="example" title="What if cart[qty] were here?">Test</span>',
+			'<span class="example" title="What if cart[\'qty\'] were here?">Test</span>',
 			'<span class="example" title="What if cart[\"qty\"] were here?">Test</span>',
 			'<span class="example" title="What if cart[qty name="yes"] were here?">Test</span>',
 			"If this <cat[qty]>.",
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( $h ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
+	public function test_does_not_affect_bracketed_integers() {
+		$html = array(
+			'See [1] for more info.',
+			'There are [45] here.',
+			'There are [ 16 ] here.',
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( $h ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
+	public function test_does_not_affect_bracketed_quoted_strings() {
+		$html = array(
+			'Code example of $cat["name"]',
+			'Code example of $cat[ "name" ]',
+			"Give it a name of cart[{\$cart_item_key}]['qty']",
+			"Give it a name of cart[ {\$cart_item_key} ][ 'qty' ]",
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( wptexturize( $h ) ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
+	public function test_does_not_affect_bracketed_variable() {
+		$html = array(
+			'Code example of [$cat].',
+			'Give it a name of $cart[ $cat_food ]',
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( $h ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
+	public function test_does_not_affect_empty_brackets() {
+		$html = array(
+			'Code example of [].',
+			"Give it a name of cart[{\$cart_item_key}][]",
 		);
 
 		foreach ( $html as $h ) {
