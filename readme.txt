@@ -117,6 +117,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 = () =
 * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
 * Change: Enable more error output for unit tests.
+* Change: Update copyright date (2017).
 * New: Add LICENSE file.
 
 = 1.8 (2016-05-21) =
