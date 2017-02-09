@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 4.7
-Stable tag: 1.8
+Stable tag: 1.8.1
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -122,7 +122,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
-= () =
+= 1.8.1 (2017-02-08) =
 * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
 * Change: Enable more error output for unit tests.
 * Change: Add more unit tests.
@@ -233,6 +233,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+Trivial update: noted compatibility through WP 4.7+, added more unit tests, updated unit test bootstrap, minor documentation tweaks, updated copyright date
 
 = 1.8 =
 Bugfix release: no longer attempt to hide shortcodes (or what looks like shortcodes) within HTML tags (fixes compatibility with WooCommerce, among others); verified compatibility through WP 4.5+.
