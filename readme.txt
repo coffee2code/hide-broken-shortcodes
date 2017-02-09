@@ -128,6 +128,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 * Change: Add more unit tests.
 * Change: Note compatibility through WP 4.7+.
 * Change: Miscellaneous readme.txt improvements.
+* Change: Minor code documentation reformatting.
 * Change: Update copyright date (2017).
 * New: Add LICENSE file.
 

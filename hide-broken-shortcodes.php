@@ -61,14 +61,14 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Class constructor: initializes class variables and adds actions and filters.
+	 * Initializes class variables and adds actions and filters.
 	 */
 	public static function init() {
 		add_action( 'plugins_loaded', array( __CLASS__, 'register_filters' ) );
 	}
 
 	/**
-	 * Register filters.
+	 * Registers filters and loads text domain.
 	 *
 	 * @since 1.7 Filter 'the_excerpt' by default as well.
 	 */
@@ -96,7 +96,7 @@ class c2c_HideBrokenShortcodes {
 	/**
 	 * Like WP's get_shortcode_regex(), but matches for anything that looks like a shortcode.
 	 *
-	 * @return string The regexp for finding shortcodes in a text
+	 * @return string The regexp for finding shortcodes in text.
 	 */
 	public static function get_shortcode_regex() {
 		$tagregexp = '[a-zA-Z_\-][0-9a-zA-Z_\-\+]{2,}';
@@ -144,7 +144,7 @@ class c2c_HideBrokenShortcodes {
 	 * closing tag.
 	 *
 	 * @param  string $m The preg_match result array for the unhandled shortcode.
-	 * @return string The replacement string for the unhandled shortcode.
+	 * @return string    The replacement string for the unhandled shortcode.
 	 */
 	public static function do_shortcode_tag( $m ) {
 		// If this function gets executed, then the shortcode found is not being handled.
