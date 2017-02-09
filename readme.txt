@@ -24,9 +24,9 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcode
 
 == Installation ==
 
-1. Unzip `hide-broken-shortcodes.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
-1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Optionally filter 'hide_broken_shortcode' or 'hide_broken_shortcodes_filters' if you want to customize the behavior of the plugin
+1. Install via the built-in WordPress plugin installer. Or download and unzip `hide-broken-shortcodes.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. Optionally filter 'hide_broken_shortcode' or 'hide_broken_shortcodes_filters' if you want to customize the behavior of the plugin
 
 
 == Frequently Asked Questions ==
@@ -45,6 +45,14 @@ The shortcodes will appear in your post (but without the double brackets).
 Assuming you want to allow the broken shortcodes 'abc' and 'gallery' to be ignored by this plugin (and therefore not hidden if broken), you can include the following in your theme's functions.php file or in a site-specific plugin:
 
 `
+/**
+ * Permit certain shortcodes to appear as broken without being hidden.
+ *
+ * @param string $display        The text to display in place of the broken shortcode.
+ * @param string $shortcode_name The name of the shortcode.
+ * @param array  $m              The regex match array for the shortcode.
+ * @return string
+ */
 function allowed_broken_shortcodes( $display, $shortcode_name, $m ) {
 	$shortcodes_not_to_hide = array( 'abc', 'gallery' );
 	if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
@@ -62,7 +70,7 @@ Yes.
 
 == Filters ==
 
-The plugin is further customizable via two filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
+The plugin is further customizable via two filters. Typically, code making use of filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
 = hide_broken_shortcode =
 
@@ -80,12 +88,12 @@ Example:
 /**
  * Don't show broken shortcodes or the content they wrap.
  *
- * @param string $default The output the plugin would normally show.
+ * @param string $default   The text to display in place of the broken shortcode.
  * @param string $shortcode The name of the shortcode.
- * @param string $content The text between the opening and closing "tags" of the shortcode, if any.
+ * @param array  $m         The regex match array for the shortcode.
  * @return string
  */
-function hbs_handler( $default, $shortcode, $content ) {
+function hbs_handler( $default, $shortcode, $m ) {
 	return ''; // Don't show the shortcode or text bookended by the shortcode
 }
 add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
@@ -118,6 +126,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
 * Change: Enable more error output for unit tests.
 * Change: Note compatibility through WP 4.7+.
+* Change: Miscellaneous readme.txt improvements.
 * Change: Update copyright date (2017).
 * New: Add LICENSE file.
 
