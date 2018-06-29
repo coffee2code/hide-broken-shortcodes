@@ -31,6 +31,10 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcode
 
 == Frequently Asked Questions ==
 
+= Why am I still seeing a broken shortcode even with this plugin activated? =
+
+By default, the plugin only tries to hide broken shortcodes appearing in post/page content, post/page excerpts, and widgets. It does not hide broken shortcodes that may appear in post/page titles, custom fields, menus, comments, etc.
+
 = How can I type out a shortcode in a post so that it doesn't get processed by WordPress or hidden by this plugin? =
 
 If you want want a shortcode to appear as-is in a post (for example, you are trying to provide an example of how to use a shortcode), can use the shortcode escaping syntax, which is built into WordPress, by using two opening brackets to start the shortcode, and two closing brackets to close the shortcode:
@@ -127,6 +131,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 * New: Add unit tests for square brackets in HTML comments
 * New: Add GitHub link to readme
 * Change: Minor whitespace tweaks to unit test bootstrap
+* Change: Add item to FAQ
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
