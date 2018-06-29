@@ -90,6 +90,10 @@ class c2c_HideBrokenShortcodes {
 	 * @return string
 	 */
 	public static function do_shortcode( $content ) {
+		if ( false === strpos( $content, '[' ) ) {
+			return $content;
+		}
+
 		return preg_replace_callback( '/' . self::get_shortcode_regex() . '/s', array( __CLASS__, 'do_shortcode_tag' ), $content );
 	}
 
