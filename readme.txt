@@ -72,7 +72,7 @@ Yes.
 
 The plugin is further customizable via two filters. Typically, code making use of filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
-= hide_broken_shortcode =
+**hide_broken_shortcode (filter)**
 
 The 'hide_broken_shortcode' filter allows you to customize what, if anything, gets displayed when a broken shortcode is encountered. Your hooking function can be sent 3 arguments:
 
@@ -99,7 +99,7 @@ function hbs_handler( $default, $shortcode, $m ) {
 add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
 `
 
-= hide_broken_shortcodes_filters =
+**hide_broken_shortcodes_filters (filter)**
 
 The 'hide_broken_shortcodes_filters' filter allows you to customize what filters to hook to find text with potential broken shortcodes. The three default filters are 'the_content', 'the_excerpt', and 'widget_text'. Your hooking function will only be sent one argument: the array of filters.
 
@@ -125,6 +125,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 = () =
 * New: Add GitHub link to readme
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
