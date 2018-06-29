@@ -124,6 +124,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 = () =
 * New: Add GitHub link to readme
+* Change: Minor whitespace tweaks to unit test bootstrap
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
