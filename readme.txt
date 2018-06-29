@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 4.9
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -126,8 +126,8 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
-= () =
-* New: Bail early if text doesn't contain a square bracket
+= 1.8.2 (2018-06-29) =
+* New: Bail early if text doesn't contain a square bracket (and thus no shortcodes)
 * New: Add README.md
 * New: Add unit tests for square brackets in HTML comments
 * New: Add GitHub link to readme
@@ -249,6 +249,9 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+Trivial update: noted compatibility through WP 4.9+, added README.md for GitHub, updated copyright date (2018), and other minor changes
 
 = 1.8.1 =
 Trivial update: noted compatibility through WP 4.7+, added more unit tests, updated unit test bootstrap, minor documentation tweaks, updated copyright date
