@@ -123,6 +123,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 == Changelog ==
 
 = () =
+* New: Add unit tests for square brackets in HTML comments
 * New: Add GitHub link to readme
 * Change: Minor whitespace tweaks to unit test bootstrap
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'

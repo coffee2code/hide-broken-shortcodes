@@ -199,6 +199,17 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_does_not_affect_html_comments() {
+		$html = array(
+			'<![CDATA[Some text]]>',
+			'<!-- This is [some] text -->',
+		);
+
+		foreach ( $html as $h ) {
+			$this->assertEquals( wpautop( $h ), apply_filters( 'the_content', $h ) );
+		}
+	}
+
 	/**
 	 * @dataProvider text_shortcode_without_content
 	 */
