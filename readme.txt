@@ -68,7 +68,7 @@ add_filter( 'hide_broken_shortcode', 'allowed_broken_shortcodes', 10, 3 );
 Yes.
 
 
-== Filters ==
+== Hooks ==
 
 The plugin is further customizable via two filters. Typically, code making use of filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
@@ -124,6 +124,7 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 = () =
 * New: Add GitHub link to readme
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
