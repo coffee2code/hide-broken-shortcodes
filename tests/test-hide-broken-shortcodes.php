@@ -200,18 +200,6 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @todo Maybe if it gets smarter.
-	 */
-	/*
-	public function test_does_affect_bracket_usage_in_non_form_html_attributes() {
-		$html     = '<span type="text" name="hello[world]">Text</span>';
-		$expected = '<span type="text" name="hello">Text</span>';
-
-		$this->assertEquals( wpautop( $expected ), apply_filters( 'the_content', $html ) );
-	}
-	*/
-
-	/**
 	 * @dataProvider text_shortcode_without_content
 	 */
 	public function test_unhandled_shortcodes_without_content_get_hidden( $text ) {
