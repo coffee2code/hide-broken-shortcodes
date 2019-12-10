@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 5.3
-Stable tag: 1.8.2
+Stable tag: 1.9
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -126,6 +126,19 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
+= 1.9 (2019-12-09) =
+* New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
+* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
+* Unit tests:
+    * Change: Update unit test install script and bootstrap to use latest WP unit test repo
+    * New: Add additional test data that includes shortcodes using single quotes around their attribute values
+    * Fix: Prevent theoretical warning about undefined variable
+* Change: Note compatibility through WP 5.3+
+* Change: Update copyright date (2020)
+* Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
+
 = 1.8.2 (2018-06-29) =
 * New: Bail early if text doesn't contain a square bracket (and thus no shortcodes)
 * New: Add README.md
@@ -152,6 +165,9 @@ _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/hi
 
 
 == Upgrade Notice ==
+
+= 1.9 =
+Minor update: extended support to recognize shortcodes of 1 or 2 characters in length, tweaked plugin initialization, noted compatibility through WP 5.3+, created CHANGELOG.md to store historical changelog outside of readme.txt, and updated copyright date (2020)
 
 = 1.8.2 =
 Trivial update: noted compatibility through WP 4.9+, added README.md for GitHub, updated copyright date (2018), and other minor changes

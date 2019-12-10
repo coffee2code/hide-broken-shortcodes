@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Hide Broken Shortcodes
- * Version:     1.8.2
+ * Version:     1.9
  * Plugin URI:  http://coffee2code.com/wp-plugins/hide-broken-shortcodes/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,7 +18,7 @@
  *
  * @package Hide_Broken_Shortcodes
  * @author  Scott Reilly
- * @version 1.8.2
+ * @version 1.9
  */
 
 /*
@@ -58,7 +58,7 @@ class c2c_HideBrokenShortcodes {
 	 * @since 1.4
 	 */
 	public static function version() {
-		return '1.8.2';
+		return '1.9';
 	}
 
 	/**

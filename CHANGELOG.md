@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 1.9 _(2019-12-09)_
 * New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it

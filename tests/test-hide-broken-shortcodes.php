@@ -109,7 +109,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 
 	public function test_version() {
-		$this->assertEquals( '1.8.2', c2c_HideBrokenShortcodes::version() );
+		$this->assertEquals( '1.9', c2c_HideBrokenShortcodes::version() );
 	}
 
 	/**
