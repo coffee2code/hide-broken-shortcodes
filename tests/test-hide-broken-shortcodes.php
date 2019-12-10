@@ -8,12 +8,14 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		parent::setUp();
 
 		add_shortcode( 'abcabc', array( $this, 'handle_shortcode' ) );
+		add_shortcode( 'b',      array( $this, 'handle_shortcode' ) );
 	}
 
 	public function tearDown() {
 		parent::tearDown();
 
 		remove_shortcode( 'abcabc' );
+		remove_shortcode( 'b' );
 
 		remove_filter( 'hide_broken_shortcode',          array( $this, 'prevent_shortcode_hiding' ), 10, 3 );
 		remove_filter( 'hide_broken_shortcodes_filters', array( $this, 'filter_the_title' ) );
@@ -35,7 +37,8 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 			array( 'This contains [unknown aaa="dog" /] shortcode.'),
 			array( 'This contains [unknown aaa=\'dog\' /] shortcode.'),
 			array( 'This contains [unknown][/unknown] shortcode.'),
-			array( 'This contains [tp][/tp] shortcode.')
+			array( 'This contains [tp][/tp] shortcode.'),
+			array( 'This contains [i][/i] shortcode.'),
 		);
 	}
 
@@ -44,7 +47,8 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 			array( 'This contains [unknown]abc[/unknown] shortcode.'),
 			array( 'This contains [unknown aaa="emu"]abc[/unknown] shortcode.'),
 			array( 'This contains [unknown aaa=\'emu\']abc[/unknown] shortcode.'),
-			array( 'This contains [tp]abc[/tp] shortcode.')
+			array( 'This contains [tp]abc[/tp] shortcode.'),
+			array( 'This contains [i]abc[/i] shortcode.'),
 		);
 	}
 
@@ -83,7 +87,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 	}
 
 	public function prevent_shortcode_hiding( $default_display, $shortcode_name, $match_array ) {
-		$shortcodes_not_to_hide = array( 'tp', 'unknown' );
+		$shortcodes_not_to_hide = array( 'i', 'tp', 'unknown' );
 		$display = '';
 		if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
 			$display = $match_array[0];
@@ -136,6 +140,10 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'hello (fox)', do_shortcode( 'hello [abcabc aaa="fox"]' ) );
 		$this->assertEquals( '(fox)', trim( apply_filters( 'the_content', '[abcabc aaa="fox"]' ) ) );
 		$this->assertEquals( '(hippo)hiphop(end)', trim( apply_filters( 'the_content', '[abcabc aaa="hippo"]hiphop[/abcabc]' ) ) );
+
+		$this->assertEquals( 'hello (fox)', do_shortcode( 'hello [b aaa="fox"]' ) );
+		$this->assertEquals( '(fox)', trim( apply_filters( 'the_content', '[b aaa="fox"]' ) ) );
+		$this->assertEquals( '(hippo)hiphop(end)', trim( apply_filters( 'the_content', '[b aaa="hippo"]hiphop[/b]' ) ) );
 	}
 
 	public function test_shortcode_escape_notation_not_affected() {
