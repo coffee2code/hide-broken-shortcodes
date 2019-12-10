@@ -25,6 +25,7 @@
  * TODO:
  * - (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
  * - Add donate to plugin row links
+ * - Add Gutenberg support: modify shortcode block to denote that the shortcode it contains is broken.
  */
 
 /*
