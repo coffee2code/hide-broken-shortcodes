@@ -4,6 +4,7 @@
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
+* Change: Update License URI to be HTTPS
 
 ## 1.8.2 _(2018-06-29)_
 * New: Bail early if text doesn't contain a square bracket (and thus no shortcodes)
