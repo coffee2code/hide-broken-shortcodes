@@ -5,6 +5,7 @@
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
 * Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
 
 ## 1.8.2 _(2018-06-29)_
 * New: Bail early if text doesn't contain a square bracket (and thus no shortcodes)
