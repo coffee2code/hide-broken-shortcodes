@@ -110,6 +110,11 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		$this->assertEquals( 1001, has_filter( $filter, array( 'c2c_HideBrokenShortcodes', 'do_shortcode' ) ) );
 	}
 
+	public function test_hooks_plugins_loaded() {
+		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_HideBrokenShortcodes', 'init' ) ) );
+	}
+
+
 	/**
 	 * @dataProvider text_shortcode_without_content
 	 */

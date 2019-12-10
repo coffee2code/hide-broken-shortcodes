@@ -64,7 +64,7 @@ class c2c_HideBrokenShortcodes {
 	 * Initializes class variables and adds actions and filters.
 	 */
 	public static function init() {
-		add_action( 'plugins_loaded', array( __CLASS__, 'register_filters' ) );
+		self::register_filters();
 	}
 
 	/**
@@ -167,6 +167,6 @@ class c2c_HideBrokenShortcodes {
 
 } // end c2c_HideBrokenShortcodes
 
-c2c_HideBrokenShortcodes::init();
+add_action( 'plugins_loaded', array( 'c2c_HideBrokenShortcodes', 'init' ) );
 
 endif; // end if !class_exists()

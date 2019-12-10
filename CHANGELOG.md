@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Change: Unit tests: Update unit test install script and bootstrap to use latest WP unit test repo
 * Change: Note compatibility through WP 5.3+
