@@ -80,6 +80,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 	public function prevent_shortcode_hiding( $default_display, $shortcode_name, $match_array ) {
 		$shortcodes_not_to_hide = array( 'unknown' );
+		$display = '';
 		if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
 			$display = $match_array[0];
 		}
