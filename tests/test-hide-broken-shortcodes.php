@@ -33,6 +33,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 			array( 'This contains [unknown/] shortcode.' ),
 			array( 'This contains [unknown aaa="dog"] shortcode.'),
 			array( 'This contains [unknown aaa="dog" /] shortcode.'),
+			array( 'This contains [unknown aaa=\'dog\' /] shortcode.'),
 			array( 'This contains [unknown][/unknown] shortcode.'),
 			array( 'This contains [tp][/tp] shortcode.')
 		);
@@ -42,6 +43,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		return array(
 			array( 'This contains [unknown]abc[/unknown] shortcode.'),
 			array( 'This contains [unknown aaa="emu"]abc[/unknown] shortcode.'),
+			array( 'This contains [unknown aaa=\'emu\']abc[/unknown] shortcode.'),
 			array( 'This contains [tp]abc[/tp] shortcode.')
 		);
 	}

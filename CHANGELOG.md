@@ -6,6 +6,7 @@
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Unit tests:
     * Change: Update unit test install script and bootstrap to use latest WP unit test repo
+    * New: Add additional test data that includes shortcodes using single quotes around their attribute values
     * Fix: Prevent theoretical warning about undefined variable
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
