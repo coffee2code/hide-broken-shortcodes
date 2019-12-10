@@ -5,7 +5,7 @@ Tags: shortcode, shortcodes, content, post, page, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
-Tested up to: 4.9
+Tested up to: 5.3
 Stable tag: 1.8.2
 
 Prevent broken shortcodes from appearing in posts and pages.
