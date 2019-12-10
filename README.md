@@ -11,9 +11,10 @@ This plugin is available in the WordPress Plugin Directory: https://wordpress.or
 2. Activate the plugin through the 'Plugins' admin menu in WordPress.
 3. Optionally filter `hide_broken_shortcode` or `hide_broken_shortcodes_filters` if you want to customize the behavior of the plugin.
 
+
 ## Additional Documentation
 
-See [readme.txt](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/readme.txt) for additional usage information.
+See [readme.txt](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/readme.txt) for additional usage information. See [CHANGELOG.md](CHANGELOG.md) for the list of changes for each release.
 
 
 ## Support
