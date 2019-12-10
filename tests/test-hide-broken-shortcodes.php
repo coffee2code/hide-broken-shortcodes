@@ -34,6 +34,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 			array( 'This contains [unknown aaa="dog"] shortcode.'),
 			array( 'This contains [unknown aaa="dog" /] shortcode.'),
 			array( 'This contains [unknown][/unknown] shortcode.'),
+			array( 'This contains [tp][/tp] shortcode.')
 		);
 	}
 
@@ -41,6 +42,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		return array(
 			array( 'This contains [unknown]abc[/unknown] shortcode.'),
 			array( 'This contains [unknown aaa="emu"]abc[/unknown] shortcode.'),
+			array( 'This contains [tp]abc[/tp] shortcode.')
 		);
 	}
 
@@ -79,7 +81,7 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 	}
 
 	public function prevent_shortcode_hiding( $default_display, $shortcode_name, $match_array ) {
-		$shortcodes_not_to_hide = array( 'unknown' );
+		$shortcodes_not_to_hide = array( 'tp', 'unknown' );
 		$display = '';
 		if ( in_array( $shortcode_name, $shortcodes_not_to_hide ) ) {
 			$display = $match_array[0];

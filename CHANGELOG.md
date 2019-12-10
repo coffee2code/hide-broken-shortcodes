@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add support for shortcodes with names only two characters in length (previous minimum was three)
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Unit tests:

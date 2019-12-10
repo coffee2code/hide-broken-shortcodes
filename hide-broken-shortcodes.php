@@ -103,7 +103,7 @@ class c2c_HideBrokenShortcodes {
 	 * @return string The regexp for finding shortcodes in text.
 	 */
 	public static function get_shortcode_regex() {
-		$tagregexp = '[a-zA-Z_\-][0-9a-zA-Z_\-\+]{2,}';
+		$tagregexp = '[a-zA-Z_\-][0-9a-zA-Z_\-\+]+';
 
 		// WARNING! Do not change this regex without changing do_shortcode_tag()
 		return '(?!<.*)'                         // Non-capturing check that text within HTML tags are skipped
