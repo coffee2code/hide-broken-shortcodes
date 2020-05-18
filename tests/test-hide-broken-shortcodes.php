@@ -16,9 +16,6 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 
 		remove_shortcode( 'abcabc' );
 		remove_shortcode( 'b' );
-
-		remove_filter( 'hide_broken_shortcode',          array( $this, 'prevent_shortcode_hiding' ), 10, 3 );
-		remove_filter( 'hide_broken_shortcodes_filters', array( $this, 'filter_the_title' ) );
 	}
 
 
