@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.4+
+
 ## 1.9 _(2019-12-09)_
 * New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
