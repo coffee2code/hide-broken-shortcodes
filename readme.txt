@@ -19,7 +19,7 @@ This plugin prevents unhandled shortcodes from appearing in the content of a pos
 
 See the Filters section for more customization tips.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Plugin Directory Page](https://wordpress.org/plugins/hide-broken-shortcodes/) | [GitHub](https://github.com/coffee2code/hide-broken-shortcodes/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/hide-broken-shortcodes/) | [Plugin Directory Page](https://wordpress.org/plugins/hide-broken-shortcodes/) | [GitHub](https://github.com/coffee2code/hide-broken-shortcodes/) | [Author Homepage](https://coffee2code.com)
 
 
 == Installation ==
