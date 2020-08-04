@@ -22,13 +22,6 @@
  */
 
 /*
- * TODO:
- * - (by request): add optional mode for tracking and reporting encountered broken shortcodes and what posts they were in
- * - Add donate to plugin row links
- * - Add Gutenberg support: modify shortcode block to denote that the shortcode it contains is broken.
- */
-
-/*
 	Copyright (c) 2009-2020 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
