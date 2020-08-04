@@ -257,4 +257,15 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 		$this->assertEquals( $text, apply_filters( 'widget_text', $text ) );
 	}
 
+	/*
+	 * get_shortcode_regex()
+	 */
+
+	// This is primarily just to test that the regex isn't unintentionally tweaked
+	// in such a way that isn't caught by other tests.
+	public function test_get_shortcode_regex() {
+		$expected = '(?!<.*)\[(\[?)([a-zA-Z_\-][0-9a-zA-Z_\-\+]*)(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)(?![^<>]*>)';
+
+		$this->assertEquals( $expected, c2c_HideBrokenShortcodes::get_shortcode_regex() );
+	}
 }
