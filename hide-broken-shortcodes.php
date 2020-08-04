@@ -83,7 +83,8 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Like WP's do_shortcode(), but doesn't return content immediately if no shortcodes exist.
+	 * Like WP's `do_shortcode()`, but doesn't return content immediately if no
+	 * shortcodes exist.
 	 *
 	 * @param  string $content The primary text to be processed for shortcodes.
 	 * @return string
@@ -97,7 +98,8 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Like WP's get_shortcode_regex(), but matches for anything that looks like a shortcode.
+	 * Like WP's `get_shortcode_regex()`, but matches for anything that looks
+	 * like a shortcode.
 	 *
 	 * @return string The regexp for finding shortcodes in text.
 	 */
@@ -138,8 +140,8 @@ class c2c_HideBrokenShortcodes {
 	}
 
 	/**
-	 * Callback to handle each shortcode not replaced via the traditional shortcode
-	 * system.
+	 * Callback to handle each shortcode not replaced via the traditional
+	 * shortcode system.
 	 *
 	 * The actual replacement string used can be modified by filtering
 	 * 'hide_broken_shortcode'. By default this is the text between the

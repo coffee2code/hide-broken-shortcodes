@@ -7,6 +7,7 @@
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
 * Change: Unit tests: Remove unnecessary unregistering of hooks
+* Change: Tweak inline documentation formatting
 
 ## 1.9 _(2019-12-09)_
 * New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
