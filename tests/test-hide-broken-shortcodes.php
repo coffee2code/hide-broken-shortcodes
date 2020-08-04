@@ -105,6 +105,10 @@ class Hide_Broken_Shortcodes_Test extends WP_UnitTestCase {
 	//
 
 
+	public function test_class_exists() {
+		$this->assertTrue( class_exists( 'c2c_HideBrokenShortcodes' ) );
+	}
+
 	public function test_version() {
 		$this->assertEquals( '1.9', c2c_HideBrokenShortcodes::version() );
 	}

@@ -9,6 +9,7 @@
 * Change: Tweak inline documentation formatting
 * Unit tests:
     * New: Add test for `get_shortcode_regex()`
+    * New: Add test for class name
     * Change: Remove unnecessary unregistering of hooks
 
 ## 1.9 _(2019-12-09)_
