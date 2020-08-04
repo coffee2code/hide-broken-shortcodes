@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 5.4
-Stable tag: 1.9
+Stable tag: 1.9.1
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -126,6 +126,18 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
+= 1.9.1 (2020-08-04) =
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
+* Change: Add inline documentation for hooks
+* Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
+* Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
+* Change: Tweak inline documentation formatting
+* Unit tests:
+    * New: Add test for `get_shortcode_regex()`
+    * New: Add test for class name
+    * Change: Remove unnecessary unregistering of hooks
+
 = 1.9 (2019-12-09) =
 * New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
@@ -151,20 +163,13 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
-= 1.8.1 (2017-02-08) =
-* Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable.
-* Change: Enable more error output for unit tests.
-* Change: Add more unit tests.
-* Change: Note compatibility through WP 4.7+.
-* Change: Miscellaneous readme.txt improvements.
-* Change: Minor code documentation reformatting.
-* Change: Update copyright date (2017).
-* New: Add LICENSE file.
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 1.9.1 =
+Trivial update: Added TODO.md file, updated a few URLs to be HTTPS, added more inline documentation, and noted compatibility through WP 5.4+.
 
 = 1.9 =
 Minor update: extended support to recognize shortcodes of 1 or 2 characters in length, tweaked plugin initialization, noted compatibility through WP 5.3+, created CHANGELOG.md to store historical changelog outside of readme.txt, and updated copyright date (2020)

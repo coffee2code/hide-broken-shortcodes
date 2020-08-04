@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 1.9.1 _(2020-08-04)_
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
 * Change: Add inline documentation for hooks
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
