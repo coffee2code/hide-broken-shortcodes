@@ -70,6 +70,11 @@ class c2c_HideBrokenShortcodes {
 		// Load plugin textdomain.
 		load_plugin_textdomain( 'hide-broken-shortcodes' );
 
+		/**
+		 * Filters the list of filters that get processed for broken shortcode hiding.
+		 *
+		 * @param array $filters The list of filters. Default ['the_content', 'the_excerpt', 'widget_text'].
+		 */
 		$filters = (array) apply_filters( 'hide_broken_shortcodes_filters', array( 'the_content', 'the_excerpt', 'widget_text' ) );
 
 		foreach ( $filters as $filter ) {
@@ -155,7 +160,13 @@ class c2c_HideBrokenShortcodes {
 		// If text is being wrapped by opening and closing shortcode tag, show text. Otherwise, show nothing.
 		$default_display = ( isset( $m[5] ) ? self::do_shortcode( $m[5] ) : '' );
 
-		// The filter is sending these arguments; apply_filters('hide_broken_shortcode', $default_display, $shortcode_name, $match_array)
+		/**
+		 * Filters the list of filters that get processed for broken shortcode hiding.
+		 *
+		 * @param array  $default_display The text within opening and closing shortcode tags, else an empty string.
+		 * @param string $shortcode_name  The name of the shortcode.
+		 * @param array  $match_array     The preg_match result array for the unhandled shortcode.
+		 */
 		return apply_filters( 'hide_broken_shortcode', $default_display, $m[2], $m );
 	}
 
