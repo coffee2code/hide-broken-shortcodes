@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 5.5
-Stable tag: 1.9.1
+Stable tag: 1.9.2
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -126,6 +126,15 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
+= 1.9.2 (2020-09-06) =
+* Change: Restructure unit test file structure
+    * New: Create new subdirectory `phpunit/` to house all files related to unit testing
+    * Change: Move `bin/` to `phpunit/bin/`
+    * Change: Move `tests/bootstrap.php` to `phpunit/`
+    * Change: Move `tests/` to `phpunit/tests/`
+    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+* Change: Note compatibility through WP 5.5+
+
 = 1.9.1 (2020-08-04) =
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
 * Change: Add inline documentation for hooks
@@ -151,22 +160,13 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 * Change: Update License URI to be HTTPS
 * Change: Split paragraph in README.md's "Support" section into two
 
-= 1.8.2 (2018-06-29) =
-* New: Bail early if text doesn't contain a square bracket (and thus no shortcodes)
-* New: Add README.md
-* New: Add unit tests for square brackets in HTML comments
-* New: Add GitHub link to readme
-* Change: Minor whitespace tweaks to unit test bootstrap
-* Change: Add item to FAQ
-* Change: Rename readme.txt section from 'Filters' to 'Hooks'
-* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
-* Change: Note compatibility through WP 4.9+
-* Change: Update copyright date (2018)
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 1.9.2 =
+Trivial update: Restructured unit test file structure and noted compatibility through WP 5.5+.
 
 = 1.9.1 =
 Trivial update: Added TODO.md file, updated a few URLs to be HTTPS, added more inline documentation, and noted compatibility through WP 5.4+.
