@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 5.7
-Stable tag: 1.9.2
+Stable tag: 1.9.3
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -126,6 +126,10 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
 
 == Changelog ==
 
+= 1.9.3 (2021-04-18) =
+* Change: Note compatibility through WP 5.7+
+* Change: Update copyright date (2021)
+
 = 1.9.2 (2020-09-06) =
 * Change: Restructure unit test file structure
     * New: Create new subdirectory `phpunit/` to house all files related to unit testing
@@ -147,23 +151,13 @@ add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
     * New: Add test for class name
     * Change: Remove unnecessary unregistering of hooks
 
-= 1.9 (2019-12-09) =
-* New: Add support for shortcodes with names as short as only one character in length (previous minimum was three characters)
-* Change: Initialize plugin on `plugins_loaded` action instead of on load
-* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
-* Unit tests:
-    * Change: Update unit test install script and bootstrap to use latest WP unit test repo
-    * New: Add additional test data that includes shortcodes using single quotes around their attribute values
-    * Fix: Prevent theoretical warning about undefined variable
-* Change: Note compatibility through WP 5.3+
-* Change: Update copyright date (2020)
-* Change: Update License URI to be HTTPS
-* Change: Split paragraph in README.md's "Support" section into two
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 1.9.3 =
+Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
 
 = 1.9.2 =
 Trivial update: Restructured unit test file structure and noted compatibility through WP 5.5+.
