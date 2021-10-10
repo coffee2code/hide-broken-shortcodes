@@ -24,7 +24,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/hide-broken-shortcod
 
 == Installation ==
 
-1. Install via the built-in WordPress plugin installer. Or download and unzip `hide-broken-shortcodes.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+1. Install via the built-in WordPress plugin installer. Or install the plugin code inside the plugins directory for your site (typically `/wp-content/plugins/`).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. Optionally filter 'hide_broken_shortcode' or 'hide_broken_shortcodes_filters' if you want to customize the behavior of the plugin
 
