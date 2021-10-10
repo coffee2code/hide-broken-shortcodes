@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.5
 Tested up to: 5.8
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 
 Prevent broken shortcodes from appearing in posts and pages.
 
@@ -84,6 +84,19 @@ As an overview, these are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 1.9.4 (2021-10-09) =
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
+* Change: Note compatibility through WP 5.8+
+* Change: Tweak installation instruction
+* Change: Tweak TODO entry
+* Unit tests:
+    * Change: Restructure unit test directories
+        * Change: Move `phpunit/` into `tests/`
+        * Change: Move `phpunit/bin` into `tests/`
+    * Change: Remove 'test-' prefix from unit test file
+    * Change: In bootstrap, store path to plugin file constant
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
+
 = 1.9.3 (2021-04-18) =
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
@@ -97,22 +110,13 @@ As an overview, these are the hooks provided by the plugin:
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 * Change: Note compatibility through WP 5.5+
 
-= 1.9.1 (2020-08-04) =
-* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
-* Change: Add inline documentation for hooks
-* Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
-* Change: Note compatibility through WP 5.4+
-* Change: Update links to coffee2code.com to be HTTPS
-* Change: Tweak inline documentation formatting
-* Unit tests:
-    * New: Add test for `get_shortcode_regex()`
-    * New: Add test for class name
-    * Change: Remove unnecessary unregistering of hooks
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 1.9.4 =
+Trivial update: added DEVELOPER-DOCS.md, noted compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests
 
 = 1.9.3 =
 Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
