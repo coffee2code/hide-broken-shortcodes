@@ -5,6 +5,8 @@
  * @package Hide_Broken_Shortcodes
  */
 
+define( 'HIDE_BROKEN_SHORTCODES_PLUGIN_FILE', dirname( __FILE__, 3 ) . '/hide-broken-shortcodes.php' );
+
 ini_set( 'display_errors', 'on' );
 error_reporting( E_ALL );
 
@@ -20,7 +22,7 @@ require_once $_tests_dir . '/tests/phpunit/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( __FILE__, 3 ) . '/hide-broken-shortcodes.php';
+	require HIDE_BROKEN_SHORTCODES_PLUGIN_FILE;
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
