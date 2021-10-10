@@ -72,56 +72,14 @@ add_filter( 'hide_broken_shortcode', 'allowed_broken_shortcodes', 10, 3 );
 Yes.
 
 
-== Hooks ==
+== Developer Documentation ==
 
-The plugin is further customizable via two filters. Typically, code making use of filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
+Developer documentation can be found in [DEVELOPER-DOCS.md](https://github.com/coffee2code/hide-broken-shortcodes/blob/master/DEVELOPER-DOCS.md). That documentation covers the hooks provided by the plugin.
 
-**hide_broken_shortcode (filter)**
+As an overview, these are the hooks provided by the plugin:
 
-The 'hide_broken_shortcode' filter allows you to customize what, if anything, gets displayed when a broken shortcode is encountered. Your hooking function can be sent 3 arguments:
-
-Arguments :
-
-* $default (string): The default display text (what the plugin would display by default)
-* $shortcode (string): The name of the shortcode
-* The text bookended by opening and closing broken shortcodes, if present
-
-Example:
-
-`
-/**
- * Don't show broken shortcodes or the content they wrap.
- *
- * @param string $default   The text to display in place of the broken shortcode.
- * @param string $shortcode The name of the shortcode.
- * @param array  $m         The regex match array for the shortcode.
- * @return string
- */
-function hbs_handler( $default, $shortcode, $m ) {
-	return ''; // Don't show the shortcode or text bookended by the shortcode
-}
-add_filter( 'hide_broken_shortcode', 'hbs_handler', 10, 3 );
-`
-
-**hide_broken_shortcodes_filters (filter)**
-
-The 'hide_broken_shortcodes_filters' filter allows you to customize what filters to hook to find text with potential broken shortcodes. The three default filters are 'the_content', 'the_excerpt', and 'widget_text'. Your hooking function will only be sent one argument: the array of filters.
-
-Example:
-
-`
-/**
- * Make Hide Broken Shortcodes also filter 'the_title'.
- *
- * @param  array $filters_array The filters the plugin will handle.
- * @return array
- */
-function hbs_filter( $filters_array ) {
-	$filters_array[] = 'the_title'; // Assuming you've activated shortcode support in post titles
-	return $filters_array;
-}
-add_filter( 'hide_broken_shortcodes_filters', 'hbs_filter' );
-`
+* `hide_broken_shortcode`          : Customizes what, if anything, gets displayed when a broken shortcode is encountered.
+* `hide_broken_shortcodes_filters` : Customizes what filters to hook to find text with potential broken shortcodes.
 
 
 == Changelog ==
